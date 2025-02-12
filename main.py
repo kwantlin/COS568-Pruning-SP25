@@ -109,7 +109,7 @@ if __name__ == '__main__':
                         help='print statistics during training and testing')
     args = parser.parse_args()
 
-
+    print(args)
     ## Construct Result Directory ##
     if args.expid == "":
         print("WARNING: this experiment is not being saved.")

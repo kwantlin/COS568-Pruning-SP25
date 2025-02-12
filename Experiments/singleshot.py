@@ -65,6 +65,7 @@ def run(args):
 
 
     ## Display Results ##
+    pd.set_option('display.max_colwidth', None)
     frames = [pre_result.head(1), pre_result.tail(1), post_result.head(1), post_result.tail(1)]
     train_result = pd.concat(frames, keys=['Init.', 'Pre-Prune', 'Post-Prune', 'Final'])
     prune_result = metrics.summary(model, 
@@ -76,7 +77,7 @@ def run(args):
     total_flops = int((prune_result['sparsity'] * prune_result['flops']).sum())
     possible_flops = prune_result['flops'].sum()
     print("Train results:\n", train_result)
-    print("Prune results:\n", prune_result)
+    print("Prune results:\n", prune_result.to_string())
     print("Parameter Sparsity: {}/{} ({:.4f})".format(total_params, possible_params, total_params / possible_params))
     print("FLOP Sparsity: {}/{} ({:.4f})".format(total_flops, possible_flops, total_flops / possible_flops))
 
