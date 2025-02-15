@@ -1,0 +1,14 @@
+Namespace(dataset='cifar10', model='vgg16', model_class='lottery', dense_classifier=False, pretrained=False, optimizer='adam', train_batch_size=256, test_batch_size=256, pre_epochs=0, post_epochs=5, lr=0.001, lr_drops=[], lr_drop_rate=0.1, weight_decay=0.0, pruner='synflow', compression=1.0, quantization=False, prune_epochs=1, compression_schedule='exponential', mask_scope='global', prune_dataset_ratio=10, prune_batch_size=256, prune_bias=False, prune_batchnorm=False, prune_residual=False, prune_train_mode=False, reinitialize=False, shuffle=False, invert=False, pruner_list=[], prune_epoch_list=[], compression_list=[], level_list=[], experiment='singleshot', expid='cifar10-vgg16-lottery-synflow-postEpochs5-compression1', result_dir='Results/data', gpu=0, workers=4, no_cuda=False, seed=1, verbose=False)
+Loading cifar10 dataset.
+Creating lottery-vgg16 model.
+Pre-Train for 0 epochs.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Pruning with synflow for 1 epochs.
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  2.10it/s]100%|██████████| 1/1 [00:00<00:00,  2.10it/s]
+Post-Training for 5 epochs.
+Traceback (most recent call last):
+  File "/n/fs/klips/COS568-Pruning-SP25/main.py", line 137, in <module>
+    singleshot.run(args)
+  File "/n/fs/klips/COS568-Pruning-SP25/Experiments/singleshot.py", line 53, in run
+    post_result = train_eval_loop(model, loss, optimizer, scheduler, train_loader, 
+TypeError: train_eval_loop() missing 1 required positional argument: 'verbose'

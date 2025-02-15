@@ -37,7 +37,7 @@ def run(args):
     ## Pre-Train ##
     print('Pre-Train for {} epochs.'.format(args.pre_epochs))
     pre_result = train_eval_loop(model, loss, optimizer, scheduler, train_loader, 
-                                 test_loader, device, args.pre_epochs, args.verbose, use_amp=args.quantization)
+                                 test_loader, device, args.pre_epochs, args.expid, args.verbose, use_amp=args.quantization)
 
     ## Prune ##
     print('Pruning with {} for {} epochs.'.format(args.pruner, args.prune_epochs))
@@ -51,7 +51,7 @@ def run(args):
     print('Post-Training for {} epochs.'.format(args.post_epochs))
     start = time.time()
     post_result = train_eval_loop(model, loss, optimizer, scheduler, train_loader, 
-                                  test_loader, device, args.post_epochs, args.verbose, use_amp=args.quantization) 
+                                  test_loader, device, args.post_epochs, args.expid, args.verbose, use_amp=args.quantization) 
     end = time.time()
     training_time = end - start
     print(f"Post-training time: {training_time:.2f} seconds")

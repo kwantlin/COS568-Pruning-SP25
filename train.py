@@ -1,8 +1,10 @@
 import torch
+import timeit
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
 from torch.amp import autocast, GradScaler
+from torch.utils.tensorboard import SummaryWriter
 
 
 def train(model, loss, optimizer, dataloader, device, epoch, verbose, log_interval=10, use_amp=False):
@@ -59,16 +61,25 @@ def eval(model, loss, dataloader, device, verbose):
             average_loss, correct1, len(dataloader.dataset), accuracy1))
     return average_loss, accuracy1, accuracy5
 
-def train_eval_loop(model, loss, optimizer, scheduler, train_loader, test_loader, device, epochs, verbose, use_amp=False):
+def train_eval_loop(model, loss, optimizer, scheduler, train_loader, test_loader, device, epochs, expid, verbose, use_amp=False):
+    writer = SummaryWriter('Results/viz/{}'.format(expid))
+    start = timeit.default_timer()
     test_loss, accuracy1, accuracy5 = eval(model, loss, test_loader, device, verbose)
-    rows = [[np.nan, test_loss, accuracy1, accuracy5]]
+    stop = timeit.default_timer()
+    rows = [[np.nan, test_loss, accuracy1, accuracy5, stop - start]]
     for epoch in tqdm(range(epochs)):
         train_loss = train(model, loss, optimizer, train_loader, device, epoch, verbose, use_amp=use_amp)
+        start = timeit.default_timer()
         test_loss, accuracy1, accuracy5 = eval(model, loss, test_loader, device, verbose)
-        row = [train_loss, test_loss, accuracy1, accuracy5]
+        stop = timeit.default_timer()
+        print('Time: ', stop - start)
+        row = [train_loss, test_loss, accuracy1, accuracy5, stop - start]
         scheduler.step()
         rows.append(row)
-    columns = ['train_loss', 'test_loss', 'top1_accuracy', 'top5_accuracy']
+        for name, weight in model.named_parameters():
+            writer.add_histogram(name, weight, global_step=epoch)
+        # writer.flush()
+    columns = ['train_loss', 'test_loss', 'top1_accuracy', 'top5_accuracy', 'test_time']
     return pd.DataFrame(rows, columns=columns)
 
 
