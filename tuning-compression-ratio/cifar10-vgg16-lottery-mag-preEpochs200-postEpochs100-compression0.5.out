@@ -1,0 +1,35 @@
+Namespace(dataset='cifar10', model='vgg16', model_class='lottery', dense_classifier=False, pretrained=False, optimizer='adam', train_batch_size=256, test_batch_size=256, pre_epochs=200, post_epochs=100, lr=0.001, lr_drops=[], lr_drop_rate=0.1, weight_decay=0.0, pruner='mag', compression=0.5, quantization=False, prune_epochs=1, compression_schedule='exponential', mask_scope='global', prune_dataset_ratio=10, prune_batch_size=256, prune_bias=False, prune_batchnorm=False, prune_residual=False, prune_train_mode=False, reinitialize=False, shuffle=False, invert=False, pruner_list=[], prune_epoch_list=[], compression_list=[], level_list=[], experiment='singleshot', expid='cifar10-vgg16-lottery-mag-preEpochs200-postEpochs100-compression0.5', result_dir='Results/data', gpu=0, workers=4, no_cuda=False, seed=1, verbose=False)
+Loading cifar10 dataset.
+Creating lottery-vgg16 model.
+Pre-Train for 200 epochs.
+  0%|          | 0/200 [00:00<?, ?it/s]Time:  1.675850077997893
+  0%|          | 1/200 [00:17<59:01, 17.79s/it]Time:  1.6280883399304003
+  1%|          | 2/200 [00:35<57:42, 17.49s/it]Time:  1.631687019020319
+  2%|▏         | 3/200 [00:52<57:54, 17.64s/it]Time:  1.7006997190183029
+  2%|▏         | 4/200 [01:10<57:24, 17.57s/it]Time:  1.6656728950329125
+  2%|▎         | 5/200 [01:27<56:50, 17.49s/it]Time:  1.66977441101335
+  3%|▎         | 6/200 [01:44<56:12, 17.38s/it]Time:  1.694446673966013
+  4%|▎         | 7/200 [02:02<56:23, 17.53s/it]Time:  1.7210733270039782
+  4%|▍         | 8/200 [02:20<56:26, 17.64s/it]Time:  2.529985268949531
+  4%|▍         | 9/200 [02:44<1:02:13, 19.55s/it]Time:  2.5131616700673476
+  5%|▌         | 10/200 [03:10<1:08:10, 21.53s/it]Time:  2.532485992065631
+  6%|▌         | 11/200 [03:36<1:12:27, 23.00s/it]Time:  2.5293063109274954
+  6%|▌         | 12/200 [04:02<1:14:58, 23.93s/it]Time:  2.496532925986685
+  6%|▋         | 13/200 [04:28<1:16:20, 24.50s/it]Time:  2.518009319086559
+  7%|▋         | 14/200 [04:54<1:16:54, 24.81s/it]Time:  2.5292517490452155
+  8%|▊         | 15/200 [05:19<1:17:14, 25.05s/it]Time:  2.541161413071677
+  8%|▊         | 16/200 [05:45<1:17:36, 25.31s/it]Time:  2.5050428999820724
+  8%|▊         | 17/200 [06:10<1:17:15, 25.33s/it]Time:  2.559682243037969
+  9%|▉         | 18/200 [06:36<1:17:15, 25.47s/it]Time:  2.5283381800400093
+ 10%|▉         | 19/200 [07:02<1:16:55, 25.50s/it]Time:  2.5732477289857343
+ 10%|█         | 20/200 [07:28<1:16:49, 25.61s/it]Time:  2.525167854037136
+ 10%|█         | 21/200 [07:54<1:16:43, 25.72s/it]Time:  2.515480965957977
+ 11%|█         | 22/200 [08:20<1:16:37, 25.83s/it]Time:  2.4873451739549637
+ 12%|█▏        | 23/200 [08:46<1:16:44, 26.02s/it]Time:  2.5202023389283568
+ 12%|█▏        | 24/200 [09:12<1:16:18, 26.01s/it]Time:  2.4953070969786495
+ 12%|█▎        | 25/200 [09:38<1:15:52, 26.01s/it]Time:  2.544663620996289
+ 13%|█▎        | 26/200 [10:05<1:15:51, 26.16s/it]Time:  2.4853738420642912
+ 14%|█▎        | 27/200 [10:31<1:15:32, 26.20s/it]Time:  2.8709604809992015
+ 14%|█▍        | 28/200 [10:58<1:15:44, 26.42s/it]Time:  400.15827053796966
+ 14%|█▍        | 29/200 [18:49<7:35:32, 159.84s/it]Time:  705.1036202938994
+ 15%|█▌        | 30/200 [1:16:31<54:20:00, 1150.59s/it]

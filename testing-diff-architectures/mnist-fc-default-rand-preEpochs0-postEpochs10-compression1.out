@@ -1,0 +1,44 @@
+Namespace(dataset='mnist', model='fc', model_class='default', dense_classifier=False, pretrained=False, optimizer='adam', train_batch_size=256, test_batch_size=256, pre_epochs=0, post_epochs=10, lr=0.001, lr_drops=[], lr_drop_rate=0.1, weight_decay=0.0, pruner='rand', compression=1.0, quantization=False, prune_epochs=1, compression_schedule='exponential', mask_scope='global', prune_dataset_ratio=10, prune_batch_size=256, prune_bias=False, prune_batchnorm=False, prune_residual=False, prune_train_mode=False, reinitialize=False, shuffle=False, invert=False, pruner_list=[], prune_epoch_list=[], compression_list=[], level_list=[], experiment='singleshot', expid='mnist-fc-default-rand-preEpochs0-postEpochs10-compression1', result_dir='Results/data', gpu=0, workers=4, no_cuda=False, seed=1, verbose=False)
+Loading mnist dataset.
+Creating default-fc model.
+Pre-Train for 0 epochs.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Pruning with rand for 1 epochs.
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 37.28it/s]
+Post-Training for 10 epochs.
+  0%|          | 0/10 [00:00<?, ?it/s]Time:  1.9921221359982155
+ 10%|█         | 1/10 [00:13<02:05, 13.94s/it]Time:  2.0685822480008937
+ 20%|██        | 2/10 [00:27<01:51, 13.97s/it]Time:  2.7329271879862063
+ 30%|███       | 3/10 [00:42<01:40, 14.41s/it]Time:  2.4244268169859424
+ 40%|████      | 4/10 [00:58<01:29, 14.96s/it]Time:  1.8851493860129267
+ 50%|█████     | 5/10 [01:11<01:11, 14.25s/it]Time:  2.5142048909910955
+ 60%|██████    | 6/10 [01:26<00:57, 14.45s/it]Time:  2.531898543005809
+ 70%|███████   | 7/10 [01:41<00:44, 14.73s/it]Time:  2.6086254289839417
+ 80%|████████  | 8/10 [01:56<00:29, 14.76s/it]Time:  2.503547703032382
+ 90%|█████████ | 9/10 [02:10<00:14, 14.53s/it]Time:  2.760513465036638
+100%|██████████| 10/10 [02:27<00:00, 15.23s/it]100%|██████████| 10/10 [02:27<00:00, 14.74s/it]
+Post-training time: 149.28 seconds
+GPU memory allocated: 19.93 MB, peak: 22.23 MB
+Train results:
+                train_loss  test_loss  top1_accuracy  top5_accuracy  test_time
+Init.      0          NaN   2.306856          10.32          47.39   2.133975
+Pre-Prune  0          NaN   2.306856          10.32          47.39   2.133975
+Post-Prune 0          NaN   2.305042          10.32          49.26   1.825515
+Final      10    0.184234   0.184602          94.47          99.81   2.760513
+Prune results:
+    module   param  sparsity   size       shape  flops  score mean  score variance   score sum  score abs mean  score abs variance  score abs sum  prunable
+0       1  weight  0.100727  78400  (100, 784)  78400    0.003014        1.000997  236.322571        0.797409            0.365146   62516.832031      True
+1       1    bias  1.000000    100      (100,)    100    0.000000        0.000000    0.000000        0.000000            0.000000       0.000000     False
+2       3  weight  0.098400  10000  (100, 100)  10000   -0.004195        0.995103  -41.945179        0.792052            0.367775    7920.516602      True
+3       3    bias  1.000000    100      (100,)    100    0.000000        0.000000    0.000000        0.000000            0.000000       0.000000     False
+4       5  weight  0.100100  10000  (100, 100)  10000    0.010099        0.975469  100.989647        0.789619            0.352073    7896.190430      True
+5       5    bias  1.000000    100      (100,)    100    0.000000        0.000000    0.000000        0.000000            0.000000       0.000000     False
+6       7  weight  0.098200  10000  (100, 100)  10000   -0.002534        0.988294  -25.344933        0.791694            0.361521    7916.939453      True
+7       7    bias  1.000000    100      (100,)    100    0.000000        0.000000    0.000000        0.000000            0.000000       0.000000     False
+8       9  weight  0.097200  10000  (100, 100)  10000   -0.012221        0.982350 -122.213615        0.792565            0.354341    7925.648438      True
+9       9    bias  1.000000    100      (100,)    100    0.000000        0.000000    0.000000        0.000000            0.000000       0.000000     False
+10     11  weight  0.104000   1000   (10, 100)   1000   -0.024213        1.035793  -24.212658        0.826184            0.353799     826.184204      True
+11     11    bias  1.000000     10       (10,)     10    0.000000        0.000000    0.000000        0.000000            0.000000       0.000000     False
+Parameter Sparsity: 12450/119910 (0.1038)
+FLOP Sparsity: 12450/119910 (0.1038)
+Saving results.

@@ -1,0 +1,9 @@
+Namespace(dataset='cifar10', model='vgg16', model_class='lottery', dense_classifier=False, pretrained=False, optimizer='adam', train_batch_size=256, test_batch_size=256, pre_epochs=0, post_epochs=100, lr=0.001, lr_drops=[], lr_drop_rate=0.1, weight_decay=0.0, pruner='rand', compression=2.0, quantization=False, prune_epochs=1, compression_schedule='exponential', mask_scope='global', prune_dataset_ratio=10, prune_batch_size=256, prune_bias=False, prune_batchnorm=False, prune_residual=False, prune_train_mode=False, reinitialize=False, shuffle=False, invert=False, pruner_list=[], prune_epoch_list=[], compression_list=[], level_list=[], experiment='singleshot', expid='cifar10-vgg16-lottery-rand-preEpochs0-postEpochs100-compression2', result_dir='Results/data', gpu=0, workers=4, no_cuda=False, seed=1, verbose=False)
+Loading cifar10 dataset.
+Creating lottery-vgg16 model.
+Pre-Train for 0 epochs.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Pruning with rand for 1 epochs.
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [05:28<00:00, 328.19s/it]100%|██████████| 1/1 [05:28<00:00, 328.19s/it]
+Post-Training for 100 epochs.
+  0%|          | 0/100 [00:00<?, ?it/s]
